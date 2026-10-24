@@ -1,6 +1,8 @@
 import cv2
 import numpy as np
 from pathlib import Path
+from packaging.requirements import Requirement
+from importlib.metadata import PackageNotFoundError, version
 
 
 def load_image(file_name: str) -> np.ndarray:
@@ -24,3 +26,13 @@ def load_image(file_name: str) -> np.ndarray:
     img_rgb = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)
 
     return img_rgb
+
+def is_package_satisfied(req_str: str) -> bool:
+  try:
+    req = Requirement(req_str)
+    installed_ver = version(req.name)
+    if req.specifier:
+      return installed_ver in req.specifier
+    return True
+  except PackageNotFoundError:
+    return False
