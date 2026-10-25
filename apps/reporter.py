@@ -112,6 +112,15 @@ class Reporter:
         """
         return np.array2string(matrix, precision=self.tolerance)
 
+    @staticmethod
+    def format_link(link: str) -> str:
+        """
+        Format link to string
+        :param link: input link
+        :return: formatted string of the link
+        """
+        return f'<a target="_blank" href="{link}">{link}</a>'
+
     def add_item(self, key: str, value: str) -> None:
         """
         Form the report data that consist a multi strings
