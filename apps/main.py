@@ -6,8 +6,6 @@ import matplotlib.pyplot as plt
 from IPython.display import display
 from IPython.core.display import Markdown
 from pandas.io.formats.style import Styler
-from packaging.requirements import Requirement
-from importlib.metadata import PackageNotFoundError, version
 from sklearn.metrics import (confusion_matrix, accuracy_score, precision_score, recall_score, f1_score,
                              classification_report, roc_auc_score, average_precision_score,
                              precision_recall_curve, roc_curve)
@@ -34,17 +32,6 @@ def load_image(file_name: str) -> np.ndarray:
     img_rgb = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)
 
     return img_rgb
-
-
-def is_package_satisfied(req_str: str) -> bool:
-    try:
-        req = Requirement(req_str)
-        installed_ver = version(req.name)
-        if req.specifier:
-            return installed_ver in req.specifier
-        return True
-    except PackageNotFoundError:
-        return False
 
 
 def calc_class_metrics(y_test, y_pred, y_prob=None, charts=True, figsize: tuple[float, float] = (10, 4)) -> Styler:
