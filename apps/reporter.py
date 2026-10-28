@@ -155,14 +155,14 @@ class Reporter:
 
         for index in range(num_str):
             if index < len(array_str_key):
-                left_str = f"{f"{array_str_key[index]}":<{self.max_len_lf}}"
+                left_str = f'{f"{array_str_key[index]}":<{self.max_len_lf}}'
             else:
-                left_str = f"{f" ":<{self.max_len_lf}}"
+                left_str = f'{f" ":<{self.max_len_lf}}'
 
             if index < len(array_str_value):
-                right_str = f"{f"{array_str_value[index]:<{self.max_len_rt}}"}"
+                right_str = f'{f"{array_str_value[index]:<{self.max_len_rt}}"}'
             else:
-                right_str = f"{f" ":<{self.max_len_rt}}"
+                right_str = f'{f" ":<{self.max_len_rt}}'
 
             print(f" {left_str} {self.ver_split_sign} {right_str}")
 
